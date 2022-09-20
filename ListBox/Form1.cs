@@ -66,17 +66,39 @@ namespace ListBox
             //textBox1.Text=String.Empty;
             //listBox1.Items.Add(car);
 
+
+
+            var cars = listBox1.SelectedItems;
+            listBox2.DataSource = null;
+            listBox2.DataSource = cars;
+
+
+            Form2 form = new Form2();
+            form.ShowDialog();
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
+
             //var currentCar=listBox1.SelectedItem as string;
             //label1.Text=currentCar;
 
-            var car=listBox1.SelectedItem as Car;
-            label1.Text = car.ToString();
+            //var car=listBox1.SelectedItem as Car;
+            //label1.Text = car.ToString();
+            
+            var car = listBox1.SelectedItem as Car;
+           
 
+
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            var currentCar=listBox1.SelectedItem as Car;
+            listBox1.Items.Remove(currentCar);
+            listBox2.Items.Add(currentCar.Model);
+           
         }
     }
 }
